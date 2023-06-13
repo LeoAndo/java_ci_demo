@@ -248,6 +248,7 @@
             <message key="ws.notPreceded"
                      value="GenericWhitespace ''{0}'' is not preceded with whitespace."/>
         </module>
+        <!-- TODO ここは、IDEのデフォルト設定に合わせ他調整をした方が良いかも 要検討 -START -->
         <module name="Indentation">
             <property name="basicOffset" value="2"/>
             <property name="braceAdjustment" value="2"/>
@@ -256,6 +257,7 @@
             <property name="lineWrappingIndentation" value="4"/>
             <property name="arrayInitIndent" value="2"/>
         </module>
+        <!-- TODO ここは、IDEのデフォルト設定に合わせ他調整をした方が良いかも 要検討 -END -->
         <module name="AbbreviationAsWordInName">
             <property name="ignoreFinal" value="false"/>
             <property name="allowedAbbreviationLength" value="0"/>
