@@ -4,6 +4,7 @@ on: pull_request
 
 env:
   # 実行する Gradle コマンド(プロジェクトによって調整してください。)
+  GRADLE_CHECKSTYLE_TASK: 'checkstyleMain'
   GRADLE_UNIT_TEST_TASK: 'test'
 
 jobs:
@@ -48,6 +49,8 @@ jobs:
         with:
           path: ${{ steps.gem-info.outputs.dir }}
           key: ${{ runner.os }}-gem-${{ steps.gem-info.outputs.key }}
+      - name: Run checkstyle
+        run: ./gradlew $GRADLE_CHECKSTYLE_TASK
       - name: Run Unit Test
         run: ./gradlew $GRADLE_UNIT_TEST_TASK
       - name: Set up and run Danger
