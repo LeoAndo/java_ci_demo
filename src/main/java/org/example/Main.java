@@ -1,7 +1,7 @@
 package org.example;
 
 /**
- * 名前
+ * Leo Ando.
  */
 public class Main {
   /**
@@ -15,6 +15,9 @@ public class Main {
     System.out.println("Hello world!");
   }
 
+  /**
+   * 何かしらの処理を行う.
+   */
   private static void foo() {
 
   }
