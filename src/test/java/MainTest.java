@@ -36,8 +36,9 @@ class MainTest {
 
         // 期待値を設定
         final String expected = "Hello world!" + System.lineSeparator();
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, "Hello world!となるように修正して");
     }
+
     @Test
     @DisplayName("mainメソッドを実行2")
     public void main2() {
@@ -50,8 +51,9 @@ class MainTest {
 
         // 期待値を設定
         final String expected = "Hello world!2" + System.lineSeparator();
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, "Hello world!となるように修正して");
     }
+
     @Test
     @DisplayName("mainメソッドを実行3")
     public void main3() {
@@ -64,6 +66,6 @@ class MainTest {
 
         // 期待値を設定
         final String expected = "Hello world!3" + System.lineSeparator();
-        assertEquals(expected, actual);
+        assertEquals(expected, actual, "Hello world!となるように修正して");
     }
 }
