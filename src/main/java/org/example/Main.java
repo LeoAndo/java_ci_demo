@@ -5,7 +5,7 @@ package org.example;
  */
 public class Main {
   /**
-   * メインの処理
+   * メインの処理.
    * @param args
    */
   public static void main(String[] args) {
