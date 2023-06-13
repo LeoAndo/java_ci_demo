@@ -35,7 +35,7 @@ class MainTest {
         final String actual = byteArrayOutputStream.toString();
 
         // 期待値を設定
-        final String expected = "Hello world" + System.lineSeparator();
+        final String expected = "Hello world!" + System.lineSeparator();
         assertEquals(expected, actual);
     }
 }
