@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: test-reports
-        path: 'file:///home/runner/work/java_ci_demo/java_ci_demo/build/reports/tests/test/index.html'
+        path: 'build/reports/tests/test/index.html'
