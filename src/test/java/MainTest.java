@@ -11,31 +11,31 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MainTest {
-    private ByteArrayOutputStream byteArrayOutputStream;
+  private ByteArrayOutputStream byteArrayOutputStream;
 
-    @BeforeEach
-    void setUp() {
-        byteArrayOutputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(new BufferedOutputStream(byteArrayOutputStream)));
-    }
+  @BeforeEach
+  void setUp() {
+    byteArrayOutputStream = new ByteArrayOutputStream();
+    System.setOut(new PrintStream(new BufferedOutputStream(byteArrayOutputStream)));
+  }
 
-    @AfterEach
-    void tearDown() {
-        // System.setOut(System.out);
-    }
+  @AfterEach
+  void tearDown() {
+    // System.setOut(System.out);
+  }
 
-    @Test
-    @DisplayName("mainメソッドを実行")
-    public void main() {
-        // main()メソッドを実行
-        Main.main(new String[]{});
+  @Test
+  @DisplayName("mainメソッドを実行")
+  public void main() {
+    // main()メソッドを実行
+    Main.main(new String[]{});
 
-        // 標準出力の内容を取得
-        System.out.flush();
-        final String actual = byteArrayOutputStream.toString();
+    // 標準出力の内容を取得
+    System.out.flush();
+    final String actual = byteArrayOutputStream.toString();
 
-        // 期待値を設定
-        final String expected = "Hello world" + System.lineSeparator();
-        assertEquals(expected, actual);
-    }
+    // 期待値を設定
+    final String expected = "Hello world!" + System.lineSeparator();
+    assertEquals(expected, actual, "Hello world!となるように修正して");
+  }
 }
