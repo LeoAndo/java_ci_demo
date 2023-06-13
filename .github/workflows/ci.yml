@@ -13,8 +13,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+#permissions:
+#  contents: read
 
 jobs:
   build:
@@ -27,12 +27,30 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: 'gradle'
+    - name: Set up Ruby # gem を利用するので Ruby をセットアップ
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - name: Get gem info
+      env: # Danger で利用する gem をここで列挙
+        PACKAGES: danger:6.2.0 danger-junit:1.0.0
+      id: gem-info
+      run: |
+        echo "::set-output name=dir::$(gem environment gemdir)" # キャッシュするgemのディレクトリ
+        echo "::set-output name=packages::$PACKAGES" # install 用の文字列
+        echo "::set-output name=key::$(echo $PACKAGES | tr ' ' '-')" # キャッシュのキー文字列
+    - name: Restore gem cache # gem のキャッシュをリストア
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.gem-info.outputs.dir }}
+        key: ${{ runner.os }}-gem-${{ steps.gem-info.outputs.key }}
     - name: Test with Gradle
       run: ./gradlew test
-
-    - name: Upload test reports (HTML)
-      if: always()
-      uses: actions/upload-artifact@v3
-      with:
-        name: test-reports
-        path: 'build/reports/tests/test/index.html'
+    - name: Set up and run Danger
+      if: cancelled() != true # 中断されない限り、エラーでも実行
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 標準で利用できるトークンを利用
+        JOB_STATUS: ${{ job.status }} # jobのステータスを Danger へ受け渡す
+      run: |
+        gem install ${{ steps.gem-info.outputs.packages }}
+        danger --dangerfile='.github/workflows/check-pull-request.danger' --remove-previous-comments --fail-on-errors=true
