@@ -1,8 +1,5 @@
 package org.example;
 
-/**
- * Leo Ando.
- */
 public class Main {
   /**
    * メインの処理.
