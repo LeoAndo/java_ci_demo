@@ -38,4 +38,32 @@ class MainTest {
         final String expected = "Hello world!" + System.lineSeparator();
         assertEquals(expected, actual);
     }
+    @Test
+    @DisplayName("mainメソッドを実行2")
+    public void main2() {
+        // main()メソッドを実行
+        Main.main(new String[]{});
+
+        // 標準出力の内容を取得
+        System.out.flush();
+        final String actual = byteArrayOutputStream.toString();
+
+        // 期待値を設定
+        final String expected = "Hello world!2" + System.lineSeparator();
+        assertEquals(expected, actual);
+    }
+    @Test
+    @DisplayName("mainメソッドを実行3")
+    public void main3() {
+        // main()メソッドを実行
+        Main.main(new String[]{});
+
+        // 標準出力の内容を取得
+        System.out.flush();
+        final String actual = byteArrayOutputStream.toString();
+
+        // 期待値を設定
+        final String expected = "Hello world!3" + System.lineSeparator();
+        assertEquals(expected, actual);
+    }
 }

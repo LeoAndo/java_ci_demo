@@ -14,6 +14,9 @@ github.dismiss_out_of_range_messages({
 Dir.glob("**/build/test-results/*/*.xml").each { |report|
   junit.parse report
   junit.show_skipped_tests = true # スキップしたテストをワーニングとする(状況により適宜変更)
+  junit.skipped_headers = [:name, :file]
+  junit.headers = [:name, :file]
+  junit.passes = true
   junit.report
 }
 
