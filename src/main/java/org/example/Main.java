@@ -1,4 +1,5 @@
 package org.example;
+
 import java.io.BufferedInputStream;
 
 public class Main {
