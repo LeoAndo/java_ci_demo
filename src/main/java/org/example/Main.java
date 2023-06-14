@@ -1,16 +1,14 @@
 package org.example;
 
-/**
- * Leo Ando.
- * テストクラス
- */
+import java.io.BufferedInputStream;
+
 public class Main {
-  /**
-   * メインの処理.
-   *
-   * @param args コマンドライン引数
-   */
   public static void main(String[] args) {
-    System.out.println("Hello world!");
+    System.out.println("Hello worl!");
+    Foo();
+  }
+
+  private static void Foo() {
+
   }
 }
